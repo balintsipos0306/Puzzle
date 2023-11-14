@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo&family=Roboto+Condensed&family=Roboto+Slab:wght@300&display=swap');
+
+body{
+    background-color: lightgrey;
+    font-family: 'Roboto condensed';
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-size: calc(15px + 0.390625vw);
+}
+
+head{
+    margin: auto;
+    height: 10vh;
+}
+
+h1{
+    text-align: center;
+    letter-spacing: 0.5rem;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.kirako{
+    float:right;
+    width: calc(75% - 2px);
+    height: 90vh;
+    border-top: 2px solid black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kirako img{
+    height: 32rem;
+    width: 48rem;
+    object-fit: contain;
+    filter:brightness(0.5);
+}
+
+.kirako button{
+    position: absolute;
+    left: 50%;
+    top:50%;
+    z-index: 99;
+    width: 7rem;
+    height: 3rem;
+    transform: translate(-50%, -50%);
+}
+
+.kepcontainer{
+    position: relative
+}
+
+.kirako table{
+    width: 48rem;
+    height: 32rem;
+    display: none;
+    background-color: lightgray !important;
+}
+
+.kirako tr{
+    height: calc(32rem/4);
+}
+
+.kirako td{
+    width: calc(48rem/4);
+    border: 1px solid black;
+    padding: 0;
+    overflow: hidden;   
+}
+
+.kirako table tr td:hover{
+    filter: brightness(0.5);
+}
+
+
+.baloldal{
+    float:left;
+    width: 25%;
+    border-right: 2px solid black;
+    border-top: 2px solid black;
+    height: 90vh;
+    padding: 1%;
+    overflow: hidden;
+}
+
+.baloldal .container{
+    display: none;
+    width: 100%;
+}
+
+.row{
+    width: 100%;
+    margin: auto;
+}
+
+.baloldal .col{
+    margin: 4%;
+    height: 6rem;
+    width: 9rem;
+    overflow: hidden;
+    padding: 0;
+    margin: 1%;
+}
+
+.baloldal .col:hover{
+    filter: brightness(0.6);
+}
+
+.container{
+    text-align: center;
+}
+
+#back{
+    display: none;
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+}
+
+#info{
+    display: block;
+    text-align: center;
+    margin-top: 40%;
+}
+
+
+@media (max-width: 1382px) {
+    body{
+        overflow: scroll;
+    }
+    .baloldal{
+        float:none;
+        width: 100%;
+        margin: auto;
+        height: fit-content;
+    }
+    #info{
+        margin-top: 0;
+    }
+
+    .baloldal.container{
+        height: inherit;
+    }
+    .kirako{
+        float:none;
+        width: 100%;
+        margin: auto;
+    }
+}
