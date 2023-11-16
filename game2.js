@@ -19,7 +19,7 @@ function generateRandomList() {
 // puzzle darabok random sorrendje
 const randomList = generateRandomList();
 //gomb eltűntetése, kirakó megjelenése, puzzle darabok megjelenése
-async function start(){
+function start(){
     const gomb = document.getElementById("start");
     const kep = document.getElementById("kep");
     const table = document.getElementById("table");
