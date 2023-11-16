@@ -6,7 +6,7 @@ body{
     margin: 0;
     padding: 0;
     overflow: hidden;
-    font-size: calc(15px + 0.390625vw);
+    font-size: calc(10px + 0.390625vw);
 }
 
 head{
@@ -33,8 +33,8 @@ h1{
 }
 
 .kirako img{
-    height: 32rem;
-    width: 48rem;
+    height: 32em;
+    width: 48em;
     object-fit: contain;
     filter:brightness(0.5);
 }
@@ -44,8 +44,8 @@ h1{
     left: 50%;
     top:50%;
     z-index: 99;
-    width: 7rem;
-    height: 3rem;
+    width: 5em;
+    height: 3em;
     transform: translate(-50%, -50%);
 }
 
@@ -54,18 +54,18 @@ h1{
 }
 
 .kirako table{
-    width: 48rem;
-    height: 32rem;
+    width: 48em;
+    height: 32em;
     display: none;
     background-color: lightgray !important;
 }
 
 .kirako tr{
-    height: calc(32rem/4);
+    height: calc(32em/4);
 }
 
 .kirako td{
-    width: calc(48rem/4);
+    width: calc(48em/4);
     border: 1px solid black;
     padding: 0;
     overflow: hidden;   
@@ -84,28 +84,31 @@ h1{
     height: 90vh;
     padding: 1%;
     overflow: hidden;
+    display:flex;
+    align-items: center;
 }
 
 .baloldal .container{
     display: none;
     width: 100%;
+    margin: auto;
 }
 
 .row{
     width: 100%;
-    margin: auto;
+    margin: auto;   
 }
 
 .baloldal .col{
     margin: 4%;
-    height: 6rem;
-    width: 9rem;
+    height: 6em;
+    width: 9em;
     overflow: hidden;
     padding: 0;
     margin: 1%;
 }
 
-.baloldal .col:hover{
+.baloldal img:hover{
     filter: brightness(0.6);
 }
 
@@ -116,8 +119,8 @@ h1{
 #back{
     display: none;
     position: absolute;
-    right: 20px;
-    bottom: 15px;
+    right: 10px;
+    bottom: 5px;
 }
 
 #info{
@@ -130,8 +133,10 @@ h1{
 @media (max-width: 1382px) {
     body{
         overflow: scroll;
+        position: relative;
     }
     .baloldal{
+        font-size: 1.5;
         float:none;
         width: 100%;
         margin: auto;
@@ -148,5 +153,55 @@ h1{
         float:none;
         width: 100%;
         margin: auto;
+        height: fit-content;
+        padding-top: 5em;
+    }
+}
+
+@media(max-width: 800px){
+    body{
+        font-size: 0.5em;
+    }
+    .baloldal{
+        font-size: 1.5em;
+        height: fit-content;
+     }
+     h2{
+        font-size: medium;
+     }
+}
+
+@media (max-width: 570px){
+    .baloldal{
+        font-size: 0.7em;
+    }
+}
+
+
+@media(max-width: 550px){
+    .kirako{
+        font-size: 0.8em;
+    }
+    .baloldal{
+        font-size: 1em;
+        height: 30em;
+    }
+
+    #back{
+        bottom:-40px;
+        right:0;
+    }
+}
+
+@media (max-width: 400px){
+    body{
+        font-size: 0.4em;
+    }
+}
+
+@media (max-width: 350px){
+
+    h1{
+        font-size: medium;
     }
 }

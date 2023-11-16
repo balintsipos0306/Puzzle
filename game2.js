@@ -44,7 +44,7 @@ async function start(){
       elem.setAttribute("src", kepsrc);
       var segedstr = "kep" + i;
       elem.setAttribute ("id", segedstr);
-      elem.style.width= "9rem";
+      elem.style.width= "9em";
       doboz.append(elem);
     }
 
@@ -83,11 +83,12 @@ function game()
 //darabkiválasztása
 function darabvalasztas (next){
   //.col divek kiválasztása tömbbe
-  const darabok = document.querySelectorAll(".col");
+  const darabok = document.getElementsByClassName("col-sm-3 col-lg-4 col-xl-6");
   //kattintást figyelő függvény
   function kivalasztas (event){
     kepid = randomList[parseInt(event.currentTarget.id) - 1];
     
+  //korábbi lépések eltárolása
   if (!previd.includes(kepid)){
     previd.push(kepid);
   }
@@ -122,34 +123,46 @@ function helykereso(end) {
   function beszuras(){
   //tag létrehozása és beállítása
   const kepkocka = document.createElement("img");
-  kepkocka.style.width = "12rem";
-  kepkocka.style.height = "8rem";
+  kepkocka.style.width = "12em";
+  kepkocka.style.height = "8em";
   kepkocka.style.filter = "brightness(1)";
   const kepforras = "szeletek/" + kepid + ".jpg";
   kepkocka.setAttribute("src", kepforras);
+  kepkocka.setAttribute("id", kepid);
   const beszur = document.getElementById(kephelye);
 
   //beszúrás
   kepid = previd[previd.length-1];
+
   if (beszur) {
+    //van e benne már kép
     const gyerek = beszur.querySelector("img");
     if(gyerek){
+      //a kép id-je amit megpróbáltunk rossz helyre beszúrni
       var hibasid = previd.pop();
       let index = undefined;
+      //a darabtáblázatban megkeressük a kép eredeti helyét
       for (let i = 0; i < randomList.length; i++){
         if(randomList[i] == hibasid){
           index = i+1;
         }
       }
+      //újra látható lesz a darabok között
       const elem = document.getElementById(index);
       elem.style.display = "block";
+
+      //átírjuk, hogy a state táblázatban az eredetileg ott lévő kép id-je maradjon bent (ne az amit megpróbáltunk)
+      kepid = parseInt(gyerek.id);
+
     }
     else{
       beszur.appendChild(kepkocka);
     }
   } else {
+    //lehetőleg ez az ág sosem fut le :D
     alert("Hiba: Az elem nem található!");
   }
+  //state táblázat feltöltése
   switch (kephelye){
     case "col11":
       state[0] = kepid;
@@ -200,12 +213,14 @@ function helykereso(end) {
       state[15] = kepid;
       break;
   }
+  //leellenőrizzük, hogy készen van-e a kirakó
   let jo = true;
   for(let j = 1; j < 17; j++){
     if (state[j-1] != j){
       jo = false;
     }
   }
+  //győzelmet jelző üzenet megjelenítése
   if (jo){
     var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
     myModal.show();
@@ -213,20 +228,24 @@ function helykereso(end) {
   }
 };
 
+//oldal újratöltése
 function refresh(){
   location.reload();
 };
 
+//visszalépés
 function stepback(){
+  //utolsó lépés id-je
   let id = previd[previd.length-1];
   let hely = undefined;
+  //megkeresi hogy a kirakóban melyik cellában van az utoljára beszúrt kép
   for (let i = 0; i <state.length; i++){
     if (state[i] == id){
       hely = i;
     }
   }
   let helyid = undefined;
-  //megkersi a táblázatban lévő hely indexét
+  //megkeresi a táblázatban lévő hely indexét
   switch(hely){
     case 0:
       helyid = "col11";
