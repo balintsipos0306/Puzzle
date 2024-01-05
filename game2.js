@@ -1,6 +1,10 @@
 //globális változók
 let kepid = undefined;
 let kephelye = undefined;
+var lepesek = 0;
+var count = document.getElementById("counter");
+
+let finished = false;
 
 //puzzle darabok random elhelyezéséhez szükséges tömb
 function generateRandomList() {
@@ -16,10 +20,12 @@ function generateRandomList() {
   }
   return numbers;
 };
+
 // puzzle darabok random sorrendje
 const randomList = generateRandomList();
 //gomb eltűntetése, kirakó megjelenése, puzzle darabok megjelenése
 function start(){
+    count.innerHTML = "Lépések: 0";
     const gomb = document.getElementById("start");
     const kep = document.getElementById("kep");
     const table = document.getElementById("table");
@@ -73,6 +79,8 @@ function game()
           beszuras();
           kepid = undefined;
           kephelye = undefined;
+          lepesek++;
+          count.innerHTML = "Lépések:" + lepesek;
         }
         else{
           game();
@@ -222,11 +230,23 @@ function helykereso(end) {
   }
   //győzelmet jelző üzenet megjelenítése
   if (jo){
+    finished = true;
     var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
     myModal.show();
-    kesz = true;
+    isfinished(lepesek+1);
   }
 };
+
+function isfinished(st){
+  $.ajax({
+      url: 'upload.php',
+      type: 'post',
+      data: { 'steps': st },
+      success: function(data) {
+          console.log(data);
+      }
+  });
+}
 
 //oldal újratöltése
 function refresh(){

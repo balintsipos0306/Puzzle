@@ -1,0 +1,57 @@
+body{
+    background-color: lightgrey;
+}
+
+.cim{
+    width: 100%;
+    margin:auto;
+}
+
+.cim>h1{
+    margin:auto;
+    text-align: center;
+}
+
+.container{
+    width:40%;
+    margin-top: 5em;
+    text-align: center;
+    height: max-content;
+    border-radius: 10px;
+    background-color: white;
+    padding: 0.5em;
+}
+
+.row{
+    width: 100%;
+}
+
+.col{
+    text-align: center;
+}
+
+.row:first-child{
+    font-weight: bold;
+}
+
+a{
+float: right;
+margin: 5em;
+margin-top: 3em;
+}
+
+@media (max-width:680px){
+    .container{
+        width: 60%;
+    }
+
+    a{
+        margin: 2em;
+    }
+}
+
+@media(max-width:400px){
+    .container{
+        width: 90%;
+    }
+}
