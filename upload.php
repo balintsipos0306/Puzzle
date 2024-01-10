@@ -12,7 +12,7 @@
 
         $kapcsolat = kapcsolodas('mysql:host=mysql.caesar.elte.hu;dbname=balintsipos','balintsipos', 'mQYMKbrjz179Yxn6');
 
-        $prev = $conn->prepare("SELECT * FROM result");
+        $prev = $kapcsolat->prepare("SELECT * FROM result");
         $result = $prev->execute([]);
         $rows = $prev->fetchAll(PDO::FETCH_ASSOC);
 
@@ -26,10 +26,10 @@
 
         if ($tmp == 0)
         {
-            load($conn, $step);
+            load($kapcsolat, $step);
         }
         else if ($tmp > $step){
-            $stmt = $conn->prepare("UPDATE result SET moves = ? WHERE username = ?");
+            $stmt = $kapcsolat->prepare("UPDATE result SET moves = ? WHERE username = ?");
             $stmt->execute([$step, $_SESSION['uname']]);
         }
     }
